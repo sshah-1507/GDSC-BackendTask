@@ -1,0 +1,30 @@
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.send('Welcome to MyApp!');
+});
+
+
+app.get('/sample', (req, res) => {
+    res.json({
+        message: "This is a sample JSON response",
+        status: "success"
+    });
+});
+
+
+app.post('/submit', (req, res) => {
+    const data = req.body;
+    res.json({
+        message: "Data received successfully",
+        received_data: data
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
